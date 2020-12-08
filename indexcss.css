@@ -187,3 +187,8 @@ li:hover a.hasDropdown:after {
 }
 
 /* End Multiple Section Menu */
+
+img {
+  max-width: 100%;
+  display: block;
+}
