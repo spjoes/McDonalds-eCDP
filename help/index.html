@@ -12,11 +12,11 @@
 <script type="text/javascript">
     $(function () {
         $("#readyselectmethodpleasework").change(function () {
-            if ($(this).val() == "1") {
+            if ($(this).val() == "0") {
                 $("#method2").hide();
                 $("#method1").show();
             }
-            if ($(this).val() == "2") {
+            if ($(this).val() == "1") {
                 $("#method1").hide();
                 $("#method2").show();
             }
@@ -90,13 +90,12 @@
   <br>
   <br>
   <div class="border">
-  <h2>----------HOW TO USE THE ENGLISH TRANSLATION OF THE GAME [OPEN BETA Version 6.0.0]----------</h2>
+  <h2>----------HOW TO USE THE ENGLISH TRANSLATION OF THE GAME [OPEN BETA Version 7.0.0]----------</h2>
 
   <h3>Please select your preferred patching method:</h3>
   <select id="readyselectmethodpleasework">
-      <option selected disabled hidden style='display: none' value=""></option>
-      <option value="1">Method 1 (PC/MAC REQUIRES DOWNLOAD)</option>
-      <option value="2">Method 2 (PC/MAC NO DOWNLOAD)</option>
+      <option value="0">Method 1 (PC/MAC REQUIRES DOWNLOAD)</option>
+      <option value="1">Method 2 (PC/MAC NO DOWNLOAD)</option>
   </select>
 
   <div id="method1" style="display: none">
