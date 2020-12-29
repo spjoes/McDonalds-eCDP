@@ -145,11 +145,6 @@ img {
   text-indent: 0.01px;
   text-overflow: '';
   -webkit-appearance: button; /* hide default arrow in chrome OSX */
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
 }
 
 .custom-dropdown::before,
