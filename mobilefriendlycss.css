@@ -91,6 +91,12 @@ body {
   padding: 5px;
 }
 
+.column3 {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
 /* Clearfix (clear floats) */
 .row::after {
   content: "";
