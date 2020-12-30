@@ -16,7 +16,7 @@ body {
 
 @media (max-width: 1440px) {
     body {
-        height:100vh;
+        height:125vh;
     }
 }
 
@@ -160,8 +160,8 @@ img {
 }
 
 .custom-dropdown select {
-  background-color: #f2675a;
-  color: #000;
+  background-color: #132a53;
+  color: white;
   font-size: inherit;
   padding: .5em;
   padding-right: 2.5em;
