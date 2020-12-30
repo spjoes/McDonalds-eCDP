@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  /* background-color:#f58d84; */
+  background-color:#214B91;
 
   background-image: url("./background/bg2.png");
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@ body {
 }
 
 a {
-   color: #333; 
+   color: #333;
 }
 
 @font-face {
@@ -251,12 +251,12 @@ img {
   transform: translate(-50%, 0);
 }
 
-.footer{
-  position: fixed;
-  left: 0;
+
+.footer {
+  position: relative;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  color: black;
+  left: 0;
   text-align: center;
 }
 
