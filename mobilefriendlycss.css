@@ -4,6 +4,9 @@ body {
 
   background-image: url("./background/bg2.png");
   background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 
 
