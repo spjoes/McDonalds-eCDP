@@ -1,7 +1,26 @@
 body {
   margin: 0;
-  background-color:#f58d84;
+  /* background-color:#f58d84; */
+
+  background-image: url("./background/bg2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
   font-family: 'Hind', sans-serif;
+}
+
+a {
+   color: #333; 
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(./font/MontserratBold-DOWZd.ttf);
+}
+
+div {
+  font-family: myFirstFont;
 }
 
 .topnav {
@@ -230,4 +249,17 @@ img {
   left: 50%;
   top: 33%;
   transform: translate(-50%, 0);
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, p {
+color: white;
 }
