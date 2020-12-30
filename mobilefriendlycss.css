@@ -1,4 +1,4 @@
-html, body {
+body {
   margin: 0;
   background-color:#214B91;
 
@@ -12,10 +12,6 @@ html, body {
 
 
   font-family: 'Hind', sans-serif;
-}
-
-a {
-   color: #333;
 }
 
 @font-face {
@@ -255,6 +251,6 @@ img {
   transform: translate(-50%, 0);
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, p{
 color: white;
 }
