@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../mobilefriendlycss.css">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css">
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+
+<title>MCD-eSmart Rabbit Hole</title>
+</head>
+<body>
+
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html"><img src="../images/graphics/icons/home-480.png" style="float: left; padding-right: 5px; padding-top: 1px; height: 20px; width: 24px" alt="Home">Home</a>
+    <a href="../games/ecdp.html"><img src="../images/graphics/icons/fries-384.png" style="float: left; padding-right: 5px; padding-top: 2px; height: 20px; width: 20px;" alt="Fry">eCDP</a>
+    <a href="../games/esmart.html"><img src="../images/graphics/icons/spatula-480.png" style="float: left; padding-right: 5px; height: 22px; width: 26px" alt="Home">eSmart/2.0</a>
+    <a href="../games/dma.html"><img src="../images/graphics/icons/happyfries-384.png" style="float: left; padding-right: 5px; padding-top: 2px; height: 20px; width: 20px;" alt="Happy Fry">DS Mac Adventures</a>
+    <a href="../games/ddm.html"><img src="../images/graphics/icons/wifi-480.png" style="float: left; padding-right: 5px; height: 22px; width: 25px;" alt="WIFI">Mac de DS</a>
+    <a href="../misc/mcds.html"><img src="../images/graphics/icons/ds-480.png" style="float: left; padding-right: 5px; height: 22px; width: 26px;" alt="DS">The McDonald's DS</a>
+    <a href="../misc/monogatari.html" class="active"><img src="../images/graphics/icons/gameboy-480.png" style="float: left; padding-right: 5px; padding-bottom: 2px; height: 22px; width: 26px;" alt="DS">McDonalds Monogatari</a>
+    <a href="../misc/gokkoisland.html"><img src="../images/graphics/icons/phone-480.png" style="float: left; padding-right: 5px; padding-bottom: 2px; height: 22px; width: 26px;" alt="DS">Mac Adventures</a>
+    <a href="../help/index.html"><img src="../images/graphics/icons/help-480.png" style="float: left; padding-right: 5px; padding-top: 2px; height: 20px; width: 24px" alt="Help">Help Page</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div style="padding-left:20px">
+  <div style="padding-right:20px">
+  <center>
+    <br>
+  <h1>McDonalds Monogatari</h1>
+  <br>
+  <h2>McDonalds Monogatari is a game released in Japan in 2001 for the Gameboy Color. The game is very similar to eCDP and has the player role-play as a McDonalds worker. In the game you are tasked with making food, working the cash register, & playing other minigames.</h2>
+  <br>
+  <br>
+  <div class="border">
+  <div class="row">
+    <div class="column">
+      <img src="../images/monog/boxart.jpg" alt="McDonald's Monogatari Boxart" width="263" height="331">
+      <h5>McDonald's Monogatari Boxart - Source: <a href="https://www.giantbomb.com/mcdonalds-monogatari-honobono-tenchou-ikusei-game/3030-46823/">Here</a></h5>
+    </div>
+    <div class="column">
+      <img src="../images/monog/cart.jpg" alt="McDonald's Monogatari Cartridge" width="275" height="323" style="padding-top: 15px;">
+      <h5>McDonald's Monogatari Cartridge - Source: <a href="https://retrogamesjapan.com/shop/nintendo-gameboy/gb-games/mcdonald-monogatari-story-gb-b/">Here</a></h5>
+    </div>
+    <div class="column">
+      <img src="../images/monog/title.jpg" alt="McDonald's Monogatari Title Screen" width="336" height="303">
+      <h5>McDonald's Monogatari Title Screen - Source: <a href="https://lh3.googleusercontent.com/proxy/dMRvSNJQxT1jU5CLgCg1YV31QBws5i2IiV6uRh-yMFQMLRAVeLnjIgZyYMlf-Owp7Uy7LLDqBJs3UTB8HC45F_aBCUDLV1sZYCnBJ_UhKw">Here</a></h5>
+    </div>
+  </div>
+  </div>
+
+  <br>
+  <div class="border">
+    <center>
+      <br>
+        <div class="container">
+        <video controls id="player">
+          <!-- Video files -->
+                    <!-- <source src="../videos/ecdp/intro.mp4" type="video/mp4"> -->
+                    <source src="../videos/monog/monog-360p.mp4" type="video/mp4" size="360">
+                            </video>
+
+                            <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                              // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
+                              const player = new Plyr('#player');
+
+                              // Expose
+                              window.player = player;
+                            });
+                            </script>
+
+    </div>
+    </center>
+    <h5>McDonald's Monogatari Gameplay - Source: <a href="https://www.youtube.com/watch?v=PXRBSEigbbo">Habib Jackson - Youtube</a></h5>
+    <h6>Note: Go into fullscreen to see full video</h6>
+
+
+    </center>
+
+
+  </div>
+
+
+  </center>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+</body>
+</html>
