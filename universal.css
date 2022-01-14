@@ -2,7 +2,7 @@
         font-family: myFirstFont;
         src: url(./font/MontserratBold-DOWZd.ttf);
     }
-    
+
     body {
         margin: 0;
         background-color:#214B91;
@@ -27,6 +27,11 @@
     a {
         color: #333;
     }  
+
+    footer {
+      bottom: 0%;
+      position: fixed;
+    }
 
   .container.has-multi .container__listItem {
     flex-basis: 100%;
