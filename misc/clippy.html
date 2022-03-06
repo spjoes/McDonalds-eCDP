@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../universal.css">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css">
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../clippy.css" media="all">
+
+<title>JoeyArchives - Clippy</title>
+</head>
+<body>
+	<div class="navbar">
+		<a href="#home">Home</a>
+		<!-- McDonalds -->
+		<div class="dropdown">
+		  <button class="dropbtn">McDonalds 
+			<i class="fa fa-caret-down"></i>
+		  </button>
+		  <div class="dropdown-content">
+			<a href="./McD/games/ecdp.html">eCDP</a>
+			<a href="./McD/games/esmart.html">eSmart/2.0</a>
+			<a href="./McD/games/dma.html">DS Mac Adventures</a>
+			<a href="./McD/games/ddm.html">Mac De DS</a>
+			<a href="./McD/misc/mcds.html">McDonalds DSi</a>
+			<a href="./McD/help/index.html">Help Page</a>
+		  </div>
+		</div> 
+		<!-- Wuhu Island -->
+		<!-- <div class="dropdown">
+			<form>
+				<button formaction="./wuhu/wuhu.html" class="dropbtn">Wuhu Island 
+				  <i class="fa fa-caret-down"></i>
+				</button>
+			</form>
+			<div class="dropdown-content">
+				<a href="./wuhu/wiifit.html">Wii Fit</a>
+				<a href="./wuhu/wiisports.html">Wii Sports</a>
+				<a href="./wuhu/wiisportsresort.html">Wii Sports Resort</a>
+			</div>
+		  </div> -->
+		  <!-- Misc -->
+		  <div class="dropdown">
+				<button class="dropbtn">Misc 
+				  <i class="fa fa-caret-down"></i>
+				</button>
+			<div class="dropdown-content">
+				<a href="./misc/clippy.html">Clippy</a>
+			</div>
+		  </div>
+	  </div>
+
+
+  <div style="padding-left:20px">
+  <div style="padding-right:20px">
+  <center>
+    <br>
+  <h1>Clippy</h1>
+  <h4>please take everything said in the "misc" section of the site as a sort of "blog" where I just write what I feel, not necessarily the 100% accurate version like the rest of the site is.</h4>
+  <br>
+  <h2>Designed by Kevan J. Atteberry and released in 1997 packed in with Microsoft Office, Clippy was universally hated by the vast majority of people who encountered him, even Microsoft employees. The entire Internet hated this figure, for example, an article published by MentalFloss called him "the World's Most Hated Virtual Assistant". After getting a new look in the year 2000, getting turned off by default in Office XP, followed by getting an official Office XP ad where Clippy is talked down to by his family at the dinner table aswell as Microsoft calling him such things as "%@$*#!" and "Mr.Annoying" on their website, with his retirement displayed publiclly live on stage during the Office XP Launch on May 31st of 2001, and then gets fully removed in Office 2007 for Windows and Office 2008 for Mac users. Its easy to say that Clippy didnt have the easiest life.</h2>
+  <h2>But why? Why was Clippy (or Clippit, his official name) hated so much commonly amoung people? As Sam Chiet said, in a video about Clippy, "a hated personal assistant whose only crime was wanting to help too much and not being good at". Other sources cite that it could've been because no matter how long you talk with Clippy, learn with Clippy, and see Clippy. He never learns your names or preferences and is very geared towards a first time PC user. This was probably a the biggest issue since most people at the time were treating Clippy like another human and when he didnt return those personified attriutes people got mad towards him.</h2>
+  <h2>What many dont know is that his retirement in 2001 wasnt the last we see of Clippy. Randomly in 2019, Clippy cameoed in Microsoft teams as stickers but he was gone as quickly and sliently as he came by the next morning. In July of 2021 Microsoft made another attempt to bring Clippy back with a tweet stating that if it got 20k likes, the paperclip emoji in Office 365 will be replaced by a Clippy emoji. Since then, the tweet has aquired over 171k likes and tons of support from fans aswell as other Microsoft owned companies such as Xbox. Luckily, it worked and the paperclip emoji was replaced by Clippy. To quote what @laptopmag said in reply to Microsoft's, "We replaced the standard paperclip emoji with Clippy, and we're still not over it." tweet, "Mission Accomplished".</h2>
+
+  <footer>
+    <p>&copy; Joey/IAmThePerson 2022</p>
+    </footer>
+  </center>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+<!-- Clippy.js -->
+<script src="../clippy.min.js"></script>
+
+<!-- Init script -->
+<script type="text/javascript">
+    clippy.load('Clippy', function(agent) {
+        // Do anything with the loaded agent
+        agent.show();
+		setInterval(function(){ 
+    		agent.animate()   
+		}, 5000);
+    });
+</script>
+</body>
+</html>
