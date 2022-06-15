@@ -1,0 +1,16 @@
+body {
+    background-color: #181A1B;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Mono', monospace;
+    color: white;
+}
+
+.boxed {
+    background-color: #393939;
+    padding: 10px;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+}
