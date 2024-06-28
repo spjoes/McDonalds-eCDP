@@ -1,0 +1,193 @@
+<!-- boilerplate html pls -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lrc to Extra-Ons Lyrics</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            filter: brightness(0.96);
+        }
+
+        #overlay {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background: url("./background.webp");
+            background-size: cover;
+            filter: blur(12px) brightness(0.7);
+            transform: scale(1.1);
+            z-index: -2;
+        }
+
+        /* lrc scrollbar */
+        textarea::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 5px;
+
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+            cursor:pointer;
+            /* make longer */
+            min-height: 70px;
+        }
+
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+
+    <div class="containerholder" style="display: flex; gap: 80px;">
+        <div class="container" style="width:450px; height:700px">
+            <h1>.lrc file to Extra-Ons .json file</h1>
+    
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; width:300px">
+                <input type="file" id="file" accept=".lrc" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <label for="song">Song Name:</label>
+                <input type="text" id="song" name="song" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <label for="artist">Artist Name:</label>
+                <input type="text" id="artist" name="artist" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <button id="convert" onclick="convert()" style="padding: 10px; width: calc(100% + 22px); background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px;">Convert</button>
+            </div>
+    
+            <div style="display: flex; align-items: center; gap:10px; margin-bottom:-30px">
+                <h2>Extra-Ons Lyrics</h2>
+                <button onclick="copyToClipboard('lrc')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px;">Copy</button>
+                <button onclick="download('lrc')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px;">Download</button>
+            </div>
+    
+            <textarea id="lrc" cols="30" rows="15" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;" readonly></textarea>
+        </div>
+
+
+        <div class="container" style="width:450px; height:700px">
+            <h1>.lrc file auto-grabber</h1>
+            <span style="text-align: center; margin-top:-15px; color:#999898">Note: this tool is in beta and it is not 100% certain to grab the correct lyrics (if any at all)</span>
+    
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; width:300px">
+                <label for="song">Song Name:</label>
+                <input type="text" id="song" name="song" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <label for="artist">Artist Name:</label>
+                <input type="text" id="artist" name="artist" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <button id="convert" onclick="grabAndConvert()" style="padding: 10px; width: calc(100% + 22px); background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; cursor:not-allowed">Grab & Convert</button>
+            </div>
+    
+            <div style="display: flex; align-items: center; gap:10px; margin-bottom:-30px">
+                <h2>Extra-Ons Lyrics</h2>
+                <button onclick="copyToClipboard('lrcAuto')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px; cursor:not-allowed">Copy</button>
+                <button onclick="download('lrcAuto')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px; cursor:not-allowed">Download</button>
+            </div>
+    
+            <textarea id="lrcAuto" cols="30" rows="15" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+
+        function download(id) {
+            const text = document.getElementById(id).value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'lyrics.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard(id) {
+            const textarea = document.getElementById(id);
+            textarea.select();
+            document.execCommand('copy');
+        }
+
+        function convert() {
+            const file = document.getElementById('file').files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const songName = document.getElementById('song').value;
+                const artistName = document.getElementById('artist').value;
+                const lrcContent = e.target.result;
+                
+                document.getElementById('lrc').value = parseLRC(lrcContent, songName, artistName);
+            };
+            reader.readAsText(file);
+        }
+
+        function parseLRC(lrcContent, songName, artistName) {
+            const lines = lrcContent.split('\n');
+            const lyrics = [];
+            let previousTime = 0;
+
+            lines.forEach((line, index) => {
+                const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+                if (match) {
+                    const minutes = parseInt(match[1], 10);
+                    const seconds = parseFloat(match[2]);
+                    const text = match[3].trim();
+
+                    const currentTime = minutes * 60 + (seconds+1);
+                    let duration = 1;
+
+                    if (index < lines.length - 1) {
+                        const nextMatch = lines[index + 1].match(/\[(\d+):(\d+\.\d+)\]/);
+                        if (nextMatch) {
+                            const nextMinutes = parseInt(nextMatch[1], 10);
+                            const nextSeconds = parseFloat(nextMatch[2]);
+                            const nextTime = nextMinutes * 60 + nextSeconds;
+                            duration = nextTime - currentTime;
+                        }
+                    }
+                    if (text) {
+                        lyrics.push({
+                            start: currentTime,
+                            duration: duration,
+                            text: text
+                        });
+                    }
+                    previousTime = currentTime;
+                }
+            });
+
+            const result = {
+                name: songName,
+                artist: artistName,
+                lyrics: lyrics
+            };
+
+            return JSON.stringify(result, null, 4);
+        }
+    </script>
+</body>
+</html>
