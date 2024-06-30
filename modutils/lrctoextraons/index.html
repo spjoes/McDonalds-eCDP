@@ -25,6 +25,7 @@
             align-items: center;
             gap: 20px;
             filter: brightness(0.96);
+            margin-bottom: 50px;
         }
 
         #overlay {
@@ -61,6 +62,37 @@
             background: #555;
         }
 
+        .niceButton {
+            background-color: #CA492C;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: 0.3s ease all;
+        }
+        .niceButton:hover {
+            background-color: #B43E27;
+            transform: scale(1.04);
+            transition: 0.3s ease all;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            /* background-color: #fff; */
+            padding: 10px;
+            text-align: center;
+            color: #999898;
+            font-size: 14px;
+            border-top: 1px solid #999898;
+        }
+
+        footer a {
+            color: #999898;
+            text-decoration: underline;
+        }
+
 
     </style>
 </head>
@@ -77,16 +109,18 @@
                 <input type="text" id="song" name="song" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
                 <label for="artist">Artist Name:</label>
                 <input type="text" id="artist" name="artist" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
-                <button id="convert" onclick="convert()" style="padding: 10px; width: calc(100% + 22px); background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px;">Convert</button>
+                <button id="convert" class="niceButton" onclick="convert()" style="padding: 10px; width: calc(100% + 22px);">Convert</button>
             </div>
     
             <div style="display: flex; align-items: center; gap:10px; margin-bottom:-30px">
                 <h2>Extra-Ons Lyrics</h2>
-                <button onclick="copyToClipboard('lrc')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px;">Copy</button>
-                <button onclick="download('lrc')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px;">Download</button>
+                <button onclick="copyToClipboard('lrc')" class="niceButton" style="height: 30px;">Copy</button>
+                <button onclick="download('lrc')" class="niceButton" style=" height: 30px;">Download</button>
             </div>
     
             <textarea id="lrc" cols="30" rows="15" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;" readonly></textarea>
+            <button onclick="clearTextArea('lrc')" class="niceButton" style="padding: 10px; width:100%;">Clear</button>
+
         </div>
 
 
@@ -95,24 +129,31 @@
             <span style="text-align: center; margin-top:-15px; color:#999898">Note: this tool is in beta and it is not 100% certain to grab the correct lyrics (if any at all)</span>
     
             <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; width:300px">
-                <label for="song">Song Name:</label>
-                <input type="text" id="song" name="song" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
-                <label for="artist">Artist Name:</label>
-                <input type="text" id="artist" name="artist" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
-                <button id="convert" onclick="grabAndConvert()" style="padding: 10px; width: calc(100% + 22px); background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; cursor:not-allowed">Grab & Convert</button>
+                <label for="songAuto">Song Name:</label>
+                <input type="text" id="songAuto" name="songAuto" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <label for="artistAuto">Artist Name:</label>
+                <input type="text" id="artistAuto" name="artistAuto" style="margin-bottom: 10px; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;">
+                <button id="convert" onclick="grabAndConvert()" class="niceButton" style="padding: 10px; width: calc(100% + 22px);">Grab & Convert</button>
             </div>
     
             <div style="display: flex; align-items: center; gap:10px; margin-bottom:-30px">
                 <h2>Extra-Ons Lyrics</h2>
-                <button onclick="copyToClipboard('lrcAuto')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px; cursor:not-allowed">Copy</button>
-                <button onclick="download('lrcAuto')" style="padding: 10px; background-color: #CA492C; color: white; border: none; cursor: pointer; border-radius: 15px; height: 30px; cursor:not-allowed">Download</button>
+                <button onclick="copyToClipboard('lrcAuto')" class="niceButton" style="height: 30px;">Copy</button>
+                <button onclick="download('lrcAuto')" class="niceButton" style=" height: 30px;">Download</button>
             </div>
     
             <textarea id="lrcAuto" cols="30" rows="15" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ccc; resize: none;" readonly></textarea>
+            <button onclick="clearTextArea('lrcAuto')" class="niceButton" style="padding: 10px; width:100%;">Clear</button>
+
         </div>
     </div>
 
     <script>
+
+
+        function clearTextArea(id) {
+            document.getElementById(id).value = '';
+        }
 
         function download(id) {
             const text = document.getElementById(id).value;
@@ -129,6 +170,25 @@
             const textarea = document.getElementById(id);
             textarea.select();
             document.execCommand('copy');
+        }
+
+        function grabAndConvert() {
+            const songName = document.getElementById('songAuto').value;
+            const artistName = document.getElementById('artistAuto').value;
+
+            fetch(`https://lrclib.net/api/search?track_name=${songName}&artist_name=${artistName}`)
+            .then(response => response.json())
+            .then(data => {
+                const lyrics = data[0].syncedLyrics;
+                console.log(lyrics);
+                if (lyrics) {
+                    //Parse LRC
+                    document.getElementById('lrcAuto').value = parseLRC(lyrics, songName, artistName);
+                    
+                } else {
+                    document.getElementById('lrcAuto').value = 'Lyrics not found';
+                }
+            });
         }
 
         function convert() {
@@ -189,5 +249,12 @@
             return JSON.stringify(result, null, 4);
         }
     </script>
+
+
+    <footer>
+        <p style="text-align: center; color: #999898; margin-top:0px;">Made with ❤️ by <a href="https://persn.dev" target="_blank">IAmThePerson</a></p>
+        <p style="text-align: center; color: #999898; margin-top:-5px;">Have an issue? Check the source code! <a href="https://github.com/spjoes/spjoes.github.io/tree/master/modutils/lrctoextraons" target="_blank">Click here</a></p>
+    </footer>
+
 </body>
 </html>
